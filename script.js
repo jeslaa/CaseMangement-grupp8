@@ -6,12 +6,17 @@ function getData() {
             document.getElementById("output").innerHTML = data
                 .map(function (content) {
                     return `<div class="caseCard">
-                  <div class="api-data">ID: &nbsp; ${content.id}</div>
-                  <div class="api-data">DATE: &nbsp; ${content.created}</div>
-                  <div class="api-data">EMAIL: &nbsp; ${content.email}</div>
-                  <div class="api-data">STATUS: &nbsp; ${content.status.statusName}</div>
-                  <div class="api-data">COMMENT: &nbsp; ${content.message}</div>
-                  <button class="edit-btn">Edit</button>
+                  <div class="sections">
+                    <div class="api-data">ID: &nbsp; ${content.id}</div>
+                    <div class="api-data2">DATE: &nbsp; ${content.created}</div>
+                    <div class="api-data2">EMAIL: &nbsp; ${content.email}</div>
+                  </div>
+                  <div class="sections">
+                    <div class="api-data">SUBJECT: &nbsp; ${content.subject}</div>
+                    <div class="api-data2">STATUS: &nbsp; ${content.status.statusName}</div>
+                    <div class="api-data2">COMMENT: &nbsp; ${content.message}</div>
+                    </div>
+                    <button class="edit-btn" onclick="configureEditButton;">Edit</button>
                 </div>`;
                 })
                 .join("");
@@ -70,28 +75,6 @@ function addPost(e) {
             console.log(err);
         });
 }
-/*
-let url = ('https://fnd22-shared.azurewebsites.net/api/Cases'), 
-
-    let data = {
-        email: 'Test@gmail.com',
-        message: 'Fix this stuff',
-        subject: 'Case',
-        headers: {
-            Accept: "application/json, text/plain, *//*",
-            "Content-type": "application/json",
-        },
-    }
-
-    let options = {
-        method:'PUT',
-        body: JSON.stringify(data)
-
-    }
-
-    fetch(url, options)
-        .then(res => console.log(res.status))
-
 
 /*
 function addPost(){

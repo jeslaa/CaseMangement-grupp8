@@ -38,27 +38,43 @@
     box-shadow: #333 3px 3px 10px;
     background-color: rgb(228, 228, 228);
 
+    .sections {
+        display: inline-block;
+        width: 49%;
+        border: solid 0.1rem #333;
+    }
+
     .api-data {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        padding: 0.3rem;
+        padding: 0.4rem;
+        background-color: rgb(227, 226, 208);
+        
+    }
+
+    .api-data2 {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.4rem;
+        background-color: rgb(227, 226, 208);
+        border-top: solid 0.1rem #333;
     }
 
     .edit-btn {
-        float: right;
-        margin-top: -10rem;
-        width: 4rem;
+        position: absolute;
+        width: 3rem;
         height: 2rem;
+        margin-left: 2.6rem;
         background-color: #0071e3;
         color: aliceblue;
-        border-radius: 0.5rem;
+        border-radius: 0.2rem;
         border: none;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         cursor: pointer;
         box-shadow: #333 3px 3px 7px;
-    }
 
+    }
+    
     .edit-btn:hover {
-        background-color: #0071e3ce;
+        background-color: #0359af96;
     }
 }
 
