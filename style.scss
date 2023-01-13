@@ -1,6 +1,47 @@
-*{
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+.content {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    margin-top: 2rem;
+
+    .addCard {
+        width: 80%;
+        padding: 2rem;
+        box-shadow: #333 3px 3px 10px;
+        background-color: rgb(228, 228, 228);
+
+        #title {
+            width: 100%;
+            height: 2rem;
+        }
+
+        #body {
+            min-width: 100%;
+            max-width: 100%;
+            height: 4rem;
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+.caseCard {
+    width: 80%;
+    margin-top: 1rem;
+    margin-left: 10%;
+    padding: 1rem;
+    box-shadow: #333 3px 3px 10px;
+    background-color: rgb(228, 228, 228);
+
+    .api-data {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.3rem;
+    }
+}
+
 
