@@ -17,14 +17,52 @@
   background-color: rgb(228, 228, 228);
 }
 .content .addCard #title {
-  width: 100%;
+  width: 99%;
   height: 2rem;
+  background-color: rgb(227, 226, 208);
+  margin: 0.3rem;
+  border: solid 1px #333;
 }
 .content .addCard #body {
-  min-width: 100%;
-  max-width: 100%;
+  min-width: 99%;
+  max-width: 99%;
   height: 4rem;
-  margin-top: 0.5rem;
+  background-color: rgb(227, 226, 208);
+  margin: 0.3rem;
+  border: solid 1px #333;
+}
+.content .addCard #message {
+  width: 99%;
+  height: 2rem;
+  background-color: rgb(227, 226, 208);
+  margin: 0.3rem;
+  border: solid 1px #333;
+}
+.content .addCard #subject {
+  width: 99%;
+  height: 2rem;
+  background-color: rgb(227, 226, 208);
+  margin: 0.3rem;
+  border: solid 1px #333;
+}
+.content .addCard #email {
+  width: 99%;
+  height: 2rem;
+  background-color: rgb(227, 226, 208);
+  margin: 0.3rem;
+  border: solid 1px #333;
+}
+.content .addCard .add-btn {
+  width: 4rem;
+  height: 2rem;
+  background-color: #0071e3;
+  color: aliceblue;
+  border-radius: 0.2rem;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  cursor: pointer;
+  box-shadow: #333 3px 3px 7px;
+  margin-left: 0.3rem;
 }
 
 .caseCard {
@@ -53,9 +91,9 @@
 }
 .caseCard .edit-btn {
   position: absolute;
+  right: 7.4%;
   width: 3rem;
   height: 2rem;
-  margin-left: 2.6rem;
   background-color: #0071e3;
   color: aliceblue;
   border-radius: 0.2rem;
