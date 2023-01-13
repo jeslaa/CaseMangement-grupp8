@@ -18,4 +18,5 @@ function getData() {
             console.log(err);
         });
 }
+
 getData();
