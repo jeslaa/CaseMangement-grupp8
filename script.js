@@ -11,6 +11,7 @@ function getData() {
                   <div class="api-data">EMAIL: &nbsp; ${content.email}</div>
                   <div class="api-data">STATUS: &nbsp; ${content.status.statusName}</div>
                   <div class="api-data">COMMENT: &nbsp; ${content.message}</div>
+                  <button class="edit-btn">Edit</button>
                 </div>`;
                 })
                 .join("");
@@ -69,6 +70,28 @@ function addPost(e) {
             console.log(err);
         });
 }
+/*
+let url = ('https://fnd22-shared.azurewebsites.net/api/Cases'), 
+
+    let data = {
+        email: 'Test@gmail.com',
+        message: 'Fix this stuff',
+        subject: 'Case',
+        headers: {
+            Accept: "application/json, text/plain, *//*",
+            "Content-type": "application/json",
+        },
+    }
+
+    let options = {
+        method:'PUT',
+        body: JSON.stringify(data)
+
+    }
+
+    fetch(url, options)
+        .then(res => console.log(res.status))
+
 
 /*
 function addPost(){
