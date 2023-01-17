@@ -132,7 +132,9 @@ function statusPut(id, status) {
             Accept: "application/json, text/plain, *//*",
             "Content-type": "application/json",
         },
+        
         body: JSON.stringify({'id': id, 'statusId': parseInt(status) + 1}),
+
     })
         .then((res) => res.json())
         .then((data) => console.log(data))
