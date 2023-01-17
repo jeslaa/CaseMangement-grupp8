@@ -1,6 +1,123 @@
-*{
-    box-sizing: border-box;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+.content {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    margin-top: 2rem;
+
+    .addCard {
+        width: 80%;
+        padding: 2rem;
+        box-shadow: #333 3px 3px 10px;
+        background-color: rgb(228, 228, 228);
+
+        #title {
+            width: 99%;
+            height: 2rem;
+            background-color: rgb(227, 226, 208);
+            margin: 0.3rem;
+            border: solid 1px #333;
+        }
+
+        #body {
+            min-width: 99%;
+            max-width: 99%;
+            height: 4rem;
+            background-color: rgb(227, 226, 208);
+            margin: 0.3rem;
+            border: solid 1px #333;
+        }
+        
+        #message {
+            width: 99%;
+            height: 2rem;
+            background-color: rgb(227, 226, 208);
+            margin: 0.3rem;
+            border: solid 1px #333;
+        }
+
+        #subject {
+            width: 99%;
+            height: 2rem;
+            background-color: rgb(227, 226, 208);
+            margin: 0.3rem;
+            border: solid 1px #333;
+        }
+        
+        #email {
+            width: 99%;
+            height: 2rem;
+            background-color: rgb(227, 226, 208);
+            margin: 0.3rem;
+            border: solid 1px #333;
+        }
+
+        .add-btn {
+            width: 4rem;
+            height: 2rem;
+            background-color: #0071e3;
+            color: aliceblue;
+            border-radius: 0.2rem;
+            border: none;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            cursor: pointer;
+            box-shadow: #333 3px 3px 7px;
+            margin-left: 0.3rem;
+        }
+    }
+}
+
+.caseCard {
+    width: 80%;
+    margin-top: 1rem;
+    margin-left: 10%;
+    padding: 1rem;
+    box-shadow: #333 3px 3px 10px;
+    background-color: rgb(228, 228, 228);
+
+    .sections {
+        display: inline-block;
+        width: 49%;
+        border: solid 0.1rem #333;
+    }
+
+    .api-data {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.4rem;
+        background-color: rgb(227, 226, 208);
+        
+    }
+
+    .api-data2 {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        padding: 0.4rem;
+        background-color: rgb(227, 226, 208);
+        border-top: solid 0.1rem #333;
+    }
+
+    .edit-btn {
+        position: absolute;
+        right: 7.4%;
+        width: 3rem;
+        height: 2rem;
+        background-color: #0071e3;
+        color: aliceblue;
+        border-radius: 0.2rem;
+        border: none;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        box-shadow: #333 3px 3px 7px;
+
+    }
+    
+    .edit-btn:hover {
+        background-color: #0359af96;
+    }
+}
+
 
