@@ -32,7 +32,7 @@
             margin: 0.3rem;
             border: solid 1px #333;
         }
-        
+
         #message {
             width: 99%;
             height: 2rem;
@@ -48,7 +48,7 @@
             margin: 0.3rem;
             border: solid 1px #333;
         }
-        
+
         #email {
             width: 99%;
             height: 2rem;
@@ -90,7 +90,7 @@
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         padding: 0.4rem;
         background-color: rgb(227, 226, 208);
-        
+
     }
 
     .api-data2 {
@@ -114,9 +114,20 @@
         box-shadow: #333 3px 3px 7px;
 
     }
-    
+
     .edit-btn:hover {
         background-color: #0359af96;
     }
 }
 
+.status-btnClass {
+    width: 3rem;
+    height: 2rem;
+    background-color: #0071e3;
+    color: aliceblue;
+    border-radius: 0.2rem;
+    border: none;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    box-shadow: #333 3px 3px 7px;
+}
