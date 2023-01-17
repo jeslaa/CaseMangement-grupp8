@@ -1,3 +1,4 @@
+//GET REQUEST
 function getData() {
     fetch("https://fnd22-shared.azurewebsites.net/api/Cases")
         .then((res) => res.json())
@@ -6,18 +7,20 @@ function getData() {
             document.getElementById("output").innerHTML = data
                 .map(function (content) {
                     return `<div class="caseCard">
-                  <div class="sections">
-                    <div class="api-data">ID: &nbsp; ${content.id}</div>
-                    <div class="api-data2">DATE: &nbsp; ${content.created}</div>
-                    <div class="api-data2">EMAIL: &nbsp; ${content.email}</div>
+                <div class="sections">
+                  <div class="api-data">ID: &nbsp; ${content.id}</div>
+                  <div class="api-data2">DATE: &nbsp; ${content.created}</div>
+                  <div class="api-data2">EMAIL: &nbsp; ${content.email}</div>
+                </div>
+                <div class="sections">
+                  <div class="api-data">SUBJECT: &nbsp; ${content.subject}</div>
+                  <div class="api-data2"><p id="dataApiKey">STATUS:</p> &nbsp; <p id="dataApiValue">${content.status.statusName}</p></div>
+                  <div class="api-data2"><p id="dataApiKey">COMMENT:</p> &nbsp; <p id="dataApiValue">${content.message}</p></div>
                   </div>
-                  <div class="sections">
-                    <div class="api-data">SUBJECT: &nbsp; ${content.subject}</div>
-                    <div class="api-data2">STATUS: &nbsp; ${content.status.statusName}</div>
-                    <div class="api-data2">COMMENT: &nbsp; ${content.message}</div>
-                    </div>
-                    <button class="edit-btn" onclick="configureEditButton;">Edit</button>
-                </div>`;
+                  <button class="edit-btn" onclick="editBtn()">Edit</button>
+                  <button class="status-btn" onclick="statusPut('${content.id}', '${content.statusId}')">Save</button>
+                  <button class="status-btn"">Cancel</button>
+              </div>`;
                 })
                 .join("");
         })
@@ -28,46 +31,33 @@ function getData() {
 
 getData();
 
-/*function getData() {
-    fetch("https://fnd22-shared.azurewebsites.net/api/Cases")
-        .then((res) => res.json())
-        .then((data) => {
-            const outputEl = document.getElementById("output");
-            for (const item of data) {
-                const div = document.createElement("div");
-                div.innerHTML = item.id;
-                outputEl.appendChild(div);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
-getData();*/
-
-
-/*STANDARD POST REQUEST USING FETCH*/
+/*POST REQUEST*/
 document.getElementById("addPost").addEventListener("submit", addPost);
 
 function addPost(e) {
     e.preventDefault();
 
-    let title = document.getElementById("title").value;
-    let body = document.getElementById("body").value;
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
-    let subject = document.getElementById("subject").value;
+    const title = document.getElementById("title").value;
+    const body = document.getElementById("body").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    const subject = document.getElementById("subject").value;
+
+    const data = {
+        title,
+        body,
+        email,
+        message,
+        subject,
+    };
 
     fetch("https://fnd22-shared.azurewebsites.net/api/Cases", {
         method: "POST",
-        email: 'Test@gmail.com',
-        message: 'Fix this stuff',
-        subject: 'Case',
         headers: {
             Accept: "application/json, text/plain, *//*",
             "Content-type": "application/json",
         },
-        body: JSON.stringify({ title: title, body: body, email:email, message:message, subject:subject}),
+        body: JSON.stringify(data),
     })
         .then((res) => res.json())
         .then((data) => console.log(data))
@@ -76,27 +66,100 @@ function addPost(e) {
         });
 }
 
-/*
-function addPost(){
-  fetch('https://fnd22-shared.azurewebsites.net/api/Cases')
-    .then((res) => res.json())
-    .then((data) => {
-      let output = '<h2>Posts</h2>'
-      data.foreach(function(post){
-        output += `
-        <div>
-          <h3>${post.paths}</h3>
-          <p>${post.components}</p>
-          <p>${post.info}</p>
-        </div>
-        `
-      });
-      document.getElementById('output').innerHTML = output;
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+//SUB-MENU
+let subMenu = document.getElementById("subMenu");
+
+function toggleMenu() {
+    subMenu.classList.toggle("open-menu");
 }
 
-addPost()
-*/
+//DARK MODE
+// check for saved 'darkMode' in localStorage
+let darkMode = localStorage.getItem("darkMode");
+
+const darkModeToggle = document.querySelector("#dark-mode-toggle");
+
+const enableDarkMode = () => {
+    // 1. Add the class to the body
+    document.body.classList.add("darkmode");
+    // 2. Update darkMode in localStorage
+    localStorage.setItem("darkMode", "enabled");
+};
+
+const disableDarkMode = () => {
+    // 1. Remove the class from the body
+    document.body.classList.remove("darkmode");
+    // 2. Update darkMode in localStorage
+    localStorage.setItem("darkMode", null);
+};
+
+// If the user already visited and enabled darkMode
+// start things off with it on
+if (darkMode === "enabled") {
+    enableDarkMode();
+}
+
+// When someone clicks the button
+darkModeToggle.addEventListener("click", () => {
+    // get their darkMode setting
+    darkMode = localStorage.getItem("darkMode");
+
+    // if it not current enabled, enable it
+    if (darkMode !== "enabled") {
+        enableDarkMode();
+        // if it has been enabled, turn it off
+    } else {
+        disableDarkMode();
+    }
+});
+
+//PUT REQUEST
+
+document.querySelector("status-btn").addEventListener("click", statusPut());
+
+function statusPut(id, status) {
+
+    console.log(status);
+
+    if(status == 3) {
+        console.log('Avslutad');
+        //Exit
+    }else {
+
+        fetch(`https://fnd22-shared.azurewebsites.net/api/Cases/${id}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json, text/plain, *//*",
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify({'id': id, 'statusId': parseInt(status) + 1}),
+    })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+}
+
+function editBtn () {
+    console.log('editBtn')
+}
+
+//LIVE CLOCK
+const span = document.getElementById("span");
+
+function time() {
+    let d = new Date();
+    let s = d.getSeconds();
+    let m = d.getMinutes();
+    let h = d.getHours();
+    span.textContent =
+        ("0" + h).substr(-2) +
+        ":" +
+        ("0" + m).substr(-2) +
+        ":" +
+        ("0" + s).substr(-2);
+}
+
+setInterval(time, 1000);
