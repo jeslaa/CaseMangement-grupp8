@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+<<<<<<< HEAD
         <div class="content">
             <h1>Felanmälan</h1>
             <div class="addCard">
@@ -26,10 +27,50 @@
                     </div>
                     <input class="add-btn" type="submit" value="Add Case" />
                 </form>
+=======
+        <div class="wrapper">
+            <label class="switch">
+                <input type="checkbox" name="checkbox" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="toggle dark mode">
+                <span class="slider"></span>
+            </label>
+            <p class="wrapper-p">Case Manager <span id="span"></span></p>
+        </div>    
+            <div class="navbar">
+                <div class="navbar-buttons">
+                    <a href="index.html" class="nav-btn">Cases</a>
+                    <a href="#" class="nav-btn" id="active" onclick="toggleMenu()">Add case</a>
+                    <a href="#" class="nav-btn">Put</a>
+                    <a href="#" class="nav-btn">Delete</a>
+                </div>
+            </div>
+
+        <div class="sub-menu-wrap" id="subMenu">
+            <div class="popup">
+                <div class="addCard">
+                    <form id="addPost">
+                        <div>
+                            <input
+                            id="subject"
+                            type="text"
+                            placeholder=" Subject"
+                            />
+                            <input
+                            id="message"
+                            type="text"
+                            placeholder=" Comment"
+                            />
+                            <input id="email" type="email" placeholder=" Email" />
+                        </div>
+                        <input class="add-btn" type="submit" value="Add Case" />
+                    </form>
+                </div>
+>>>>>>> 81d98cd8a2a21d264e71dc4cc6f25ad9c9b4f5d0
             </div>
             <h1>Aktuella ärende</h1>
         </div>
-        <div id="output"></div>
+
+        <div id="output">
+        </div>
 
         <script src="script.js"></script>
     </body>
