@@ -31,22 +31,37 @@ function getData() {
 
 getData();
 
+// // Sort JSON 
+// function sortJSON(arr, key, asc=true)  {
+//     return arr.sort((a, b) =>{
+//         let x = a[key];
+//         let y = b[key];
+//         if(asc) { return ((x < y) ? -1 : ((x > y) ? 1 : 0)); }
+//         else { return ((x > y) ? -1 : ((x < y) ? 1 : 0)); }
+//     });
+// }
+// console.log(sortJSON())
+
+// output = sortJSON(data,"id", false);
+
 /*POST REQUEST*/
 document.getElementById("addPost").addEventListener("submit", addPost);
 
 function addPost(e) {
     e.preventDefault();
 
-    const subject = document.getElementById("subject").value;
+    const title = document.getElementById("title").value;
+    const body = document.getElementById("body").value;
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
-    const body = document.getElementById("body").value;
+    const subject = document.getElementById("subject").value;
 
     const data = {
-        subject,
+        title,
+        body,
         email,
         message,
-        body,
+        subject,
     };
 
     fetch("https://fnd22-shared.azurewebsites.net/api/Cases", {
@@ -147,19 +162,19 @@ function editBtn () {
 }
 
 //LIVE CLOCK
-const span = document.getElementById("span");
+// const span = document.getElementById("span");
 
-function time() {
-    let d = new Date();
-    let s = d.getSeconds();
-    let m = d.getMinutes();
-    let h = d.getHours();
-    span.textContent =
-        ("0" + h).substr(-2) +
-        ":" +
-        ("0" + m).substr(-2) +
-        ":" +
-        ("0" + s).substr(-2);
-}
+// function time() {
+//     let d = new Date();
+//     let s = d.getSeconds();
+//     let m = d.getMinutes();
+//     let h = d.getHours();
+//     span.textContent =
+//         ("0" + h).substr(-2) +
+//         ":" +
+//         ("0" + m).substr(-2) +
+//         ":" +
+//         ("0" + s).substr(-2);
+// }
 
-setInterval(time, 1000);
+// setInterval(time, 1000);
