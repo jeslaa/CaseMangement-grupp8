@@ -16,11 +16,8 @@
             <p class="wrapper-p">Case Manager <span id="span"></span></p>
         </div>    
             <div class="navbar">
-                <div class="navbar-buttons">
-                    <a href="index.html" class="nav-btn">Cases</a>
+                <div class="navbar-buttons"> 
                     <a href="#" class="nav-btn" id="active" onclick="toggleMenu()">Add case</a>
-                    <a href="#" class="nav-btn">Put</a>
-                    <a href="#" class="nav-btn">Delete</a>
                 </div>
             </div>
 
@@ -28,6 +25,10 @@
             <div class="popup">
                 <div class="addCard">
                     <form id="addPost">
+                        <div>
+                            <input type="text" id="title"/>
+                            <input type="text" id="body"/>
+                        </div>
                         <div>
                             <input
                             id="subject"
@@ -41,16 +42,16 @@
                             />
                             <input id="email" type="email" placeholder=" Email" />
                         </div>
-                        <input class="add-btn" type="submit" value="Add Case" />
+                        <input class="add-btn" type="submit" value="Add Case" onclick="addPost()"/>
                     </form>
                 </div>
             </div>
         </div>
-
         <div id="output">
         </div>
 
         <script src="script.js"></script>
+        <script src="fun.js"></script>
     </body>
 
 </html>
