@@ -127,19 +127,10 @@ body {
   background-color: var(--clr-primary);
 }
 .sub-menu-wrap .addCard #title {
-  width: 100%;
-  height: 2rem;
-  background-color: var(--clr-secondary);
-  margin: 0.3rem;
-  border: solid 1px #333;
+  display: none;
 }
 .sub-menu-wrap .addCard #body {
-  min-width: 100%;
-  max-width: 100%;
-  height: 4rem;
-  margin: 0.3rem;
-  border: solid 1px #333;
-  background-color: var(--clr-secondary);
+  display: none;
 }
 .sub-menu-wrap .addCard #message {
   width: 100%;
@@ -161,6 +152,7 @@ body {
   background-color: var(--clr-secondary);
   margin: 0.3rem;
   border: solid 1px #333;
+  cursor: pointer;
 }
 .sub-menu-wrap .addCard .add-btn {
   width: 4rem;
@@ -202,6 +194,7 @@ body {
   border: solid 0.1rem #333;
 }
 .caseCard .api-data {
+  display: flex;
   padding: 0.4rem;
   background-color: var(--clr-secondary);
 }
@@ -211,9 +204,9 @@ body {
   background-color: var(--clr-secondary);
   border-top: solid 0.1rem #333;
 }
-.caseCard .edit-btn {
-  position: absolute;
-  right: 7.4%;
+.caseCard .editButton {
+  display: block;
+  margin: 0.5rem;
   width: 3rem;
   height: 2rem;
   background-color: var(--clr-buttons);
@@ -223,8 +216,46 @@ body {
   cursor: pointer;
   box-shadow: #333 3px 3px 7px;
 }
-.caseCard .edit-btn:hover {
+.caseCard .editButton:hover {
   background-color: #0359af;
+}
+.caseCard .saveBtn {
+  width: 3rem;
+  height: 2rem;
+  background-color: var(--clr-buttons);
+  color: var(--clr-btntext);
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: #333 3px 3px 7px;
+  margin: 0.5rem;
+}
+.caseCard .saveBtn:hover {
+  background-color: #3b8c3e;
+}
+.caseCard .cancelBtn {
+  width: 3rem;
+  height: 2rem;
+  background-color: var(--clr-buttons);
+  color: var(--clr-btntext);
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: #333 3px 3px 7px;
+  margin: 0.5rem;
+}
+.caseCard .cancelBtn:hover {
+  background-color: #a82f2f;
+}
+.caseCard .status {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 0.7rem;
+  color: var(--clr-text);
+}
+.caseCard .form {
+  border: 4px solid var(--clr-buttons);
+  padding: 0.2rem;
 }
 
 /*COLORS / DAY/NIGHT-MODE*/
@@ -241,11 +272,11 @@ body {
 
 .darkmode {
   --clr-background: rgb(99, 99, 99);
-  --clr-primary: rgb(255, 255, 255);
-  --clr-secondary: rgb(77, 77, 77);
+  --clr-primary: rgb(51, 52, 55);
+  --clr-secondary: rgb(128, 128, 128);
   --clr-thrid: #6f7781;
-  --clr-buttons: #1e3348;
-  --clr-buttonHover: #2c4a68;
+  --clr-buttons: #47617b;
+  --clr-buttonHover: #1f3041;
   --clr-btntext: #ffffff;
   --clr-text: #ffffff;
 }/*# sourceMappingURL=style.css.map */
