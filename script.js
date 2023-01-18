@@ -116,7 +116,9 @@ function putRequest(id) {
                 "application/json, text/plain, *//*",
             "Content-type": "application/json",
         },
+        
         body: JSON.stringify(data),
+
     })
     .then((res) => res.json())
     .then((data) => console.log(data))
