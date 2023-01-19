@@ -203,7 +203,7 @@ body {
 }
 .caseCard .api-data {
   padding: 0.4rem;
-  background-color: var(--clr-secondary);
+  background-color: rgb(227, 226, 208);
 }
 .caseCard .api-data2 {
   display: flex;
@@ -225,27 +225,4 @@ body {
 }
 .caseCard .edit-btn:hover {
   background-color: #0359af;
-}
-
-/*COLORS / DAY/NIGHT-MODE*/
-:root {
-  --clr-background: rgb(243, 243, 243);
-  --clr-primary: #B9B7BD;
-  --clr-secondary: #eef5ff;
-  --clr-thrid: #9da6af7a;
-  --clr-buttons: #bcd4f5;
-  --clr-buttonHover: #ffd000de;
-  --clr-btntext: #000000;
-  --clr-text: #000000;
-}
-
-.darkmode {
-  --clr-background: rgb(99, 99, 99);
-  --clr-primary: rgb(255, 255, 255);
-  --clr-secondary: rgb(77, 77, 77);
-  --clr-thrid: #6f7781;
-  --clr-buttons: #1e3348;
-  --clr-buttonHover: #2c4a68;
-  --clr-btntext: #ffffff;
-  --clr-text: #ffffff;
 }/*# sourceMappingURL=style.css.map */
