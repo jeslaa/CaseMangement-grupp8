@@ -1,63 +1,81 @@
-//GET REQUEST
+//init get request for API to get cases
 function getData() {
     fetch("https://fnd22-shared.azurewebsites.net/api/Cases")
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            document.getElementById("output").innerHTML = data
-                .map(function (content) {
-                    return `<div class="caseCard">
-                <div class="sections">
-                  <div class="api-data">ID: &nbsp; ${content.id}</div>
-                  <div class="api-data2">DATE: &nbsp; ${content.created}</div>
-                  <div class="api-data2">EMAIL: &nbsp; ${content.email}</div>
-                </div>
-                <div class="sections">
-                  <div class="api-data">SUBJECT: &nbsp; ${content.subject}</div>
-                  <div class="api-data2"><p id="dataApiKey">STATUS:</p> &nbsp; <p id="dataApiValue">${content.status.statusName}</p></div>
-                  <div class="api-data2"><p id="dataApiKey">COMMENT:</p> &nbsp; <p id="dataApiValue">${content.message}</p></div>
-                  </div>
-                  <button class="edit-btn" onclick="editBtn()">Edit</button>
-                  <button class="status-btn" onclick="statusPut('${content.id}', '${content.statusId}')">Save</button>
-                  <button class="status-btn"">Cancel</button>
-              </div>`;
+            document.getElementById("output").innerHTML = data //Skriver ut all html i en div som kallas för output
+                .map(function (content) { //Mappar värden till DOMen för varje "content" hämtad från APIn
+                    return `
+                    <div class="caseCard">
+                        <div class="sections">
+                            <!-- Left section -->
+                            <div class="api-data2">
+                                <label id="dataApiKey">ID:</label> &nbsp; <p id="dataApiValue">${content.id}</p>
+                            </div>
+                            <div class="api-data2">
+                                <label id="dataApiKey">DATE:</label> &nbsp; <p id="dataApiValue">${content.created}</p>
+                            </div>
+                            <div class="api-data2">
+                                <label id="dataApiKey - ">EMAIL:</label> &nbsp; <p contenteditable="true" id="email - ${content.id}">${content.email}</p>
+                            </div>
+                        </div>
+                            <!-- Right section -->
+                        <div class="sections">
+                            <div class="api-data2">
+                                <label id="dataApiKey">SUBJECT:</label> &nbsp; <p contenteditable="true" id="subject - ${content.id}">${content.subject}</p>
+                            </div>
+                            <div class="api-data2">
+                                <label id="dataApiKey">STATUS:</label> &nbsp; <p id="status - ${content.id}">${content.status.statusName}</p>
+                            </div>
+                            <div class="api-data2">
+                                <label id="dataApiKey">COMMENT:</label> &nbsp; <p contenteditable="true" id="message - ${content.id}">${content.message}</p>
+                            </div>
+                        </div>
+                        <!-- Generates unique "buttons" for each "content" -->
+                        <div id="buttons - ${content.id}">
+                            <!-- displays buttons -->
+                            <button class="editButton" id="editBtn - ${content.id}" onclick="editBtn('${content.id}')"> Edit </button>
+                        </div>
+                    </div>
+                  `;
                 })
-                .join("");
+                .join("");  //Samlar alla caseCards till en stor string som blir DOMen för korten
         })
         .catch((err) => {
             console.log(err);
         });
 }
-
+// init data
 getData();
 
-/*POST REQUEST*/
-document.getElementById("addPost").addEventListener("submit", addPost);
+//Post request for adding a new case
+function addPost() {
 
-function addPost(e) {
-    e.preventDefault();
-
+    //Value for post
     const title = document.getElementById("title").value;
     const body = document.getElementById("body").value;
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
     const subject = document.getElementById("subject").value;
 
-    const data = {
+    //Mapping values to object and stringfy for request 
+    const requestData = JSON.stringify({
         title,
         body,
         email,
         message,
-        subject,
-    };
+        subject
+    });
 
+    //Post fetch
     fetch("https://fnd22-shared.azurewebsites.net/api/Cases", {
         method: "POST",
         headers: {
             Accept: "application/json, text/plain, *//*",
             "Content-type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: requestData,
     })
         .then((res) => res.json())
         .then((data) => console.log(data))
@@ -66,102 +84,83 @@ function addPost(e) {
         });
 }
 
-//SUB-MENU
-let subMenu = document.getElementById("subMenu");
-
+//Pop-up modal for adding case
+const subMenu = document.getElementById("subMenu");
 function toggleMenu() {
     subMenu.classList.toggle("open-menu");
 }
 
-//DARK MODE
-// check for saved 'darkMode' in localStorage
-let darkMode = localStorage.getItem("darkMode");
+//Request that changes the mail, message and status
+function putRequest(id) {
 
-const darkModeToggle = document.querySelector("#dark-mode-toggle");
+    //Gets text from elements
+    const email = document.getElementById("email - " + id).innerText;
+    const message = document.getElementById("message - " + id).innerText;
 
-const enableDarkMode = () => {
-    // 1. Add the class to the body
-    document.body.classList.add("darkmode");
-    // 2. Update darkMode in localStorage
-    localStorage.setItem("darkMode", "enabled");
-};
+    //Gets value from select/option
+    const status = getStatusFromDropDown(id);
 
-const disableDarkMode = () => {
-    // 1. Remove the class from the body
-    document.body.classList.remove("darkmode");
-    // 2. Update darkMode in localStorage
-    localStorage.setItem("darkMode", null);
-};
+    //Mapping data to keys for 
+    const data = {
+        "id": id,
+        "message": message,
+        "email": email,
+        "statusId": status
+    };
 
-// If the user already visited and enabled darkMode
-// start things off with it on
-if (darkMode === "enabled") {
-    enableDarkMode();
-}
-
-// When someone clicks the button
-darkModeToggle.addEventListener("click", () => {
-    // get their darkMode setting
-    darkMode = localStorage.getItem("darkMode");
-
-    // if it not current enabled, enable it
-    if (darkMode !== "enabled") {
-        enableDarkMode();
-        // if it has been enabled, turn it off
-    } else {
-        disableDarkMode();
-    }
-});
-
-//PUT REQUEST
-
-document.querySelector("status-btn").addEventListener("click", statusPut());
-
-function statusPut(id, status) {
-
-    console.log(status);
-
-    if(status == 3) {
-        console.log('Avslutad');
-        //Exit
-    }else {
-
-        fetch(`https://fnd22-shared.azurewebsites.net/api/Cases/${id}`, {
+    // Put request
+    fetch(`https://fnd22-shared.azurewebsites.net/api/Cases/${id}`, {
         method: "PUT",
         headers: {
-            Accept: "application/json, text/plain, *//*",
+            Accept:
+                "application/json, text/plain, *//*",
             "Content-type": "application/json",
         },
         
-        body: JSON.stringify({'id': id, 'statusId': parseInt(status) + 1}),
+        body: JSON.stringify(data),
 
     })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => {
-            console.log(err);
-        });
-    }
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
 }
 
-function editBtn () {
-    console.log('editBtn')
+//Gets status from dropdown
+function getStatusFromDropDown(id) {
+    // Get element for currently edited form
+    const element = document.getElementById("form - " + id);
+    // Gets selected option
+    const value = element.options[element.selectedIndex].value;
+    // Return status-value
+    return value
 }
 
-//LIVE CLOCK
-const span = document.getElementById("span");
+//All card buttons
+function editBtn(contentId) {
 
-function time() {
-    let d = new Date();
-    let s = d.getSeconds();
-    let m = d.getMinutes();
-    let h = d.getHours();
-    span.textContent =
-        ("0" + h).substr(-2) +
-        ":" +
-        ("0" + m).substr(-2) +
-        ":" +
-        ("0" + s).substr(-2);
+    const buttonId = "buttons - " + contentId
+    //Tar bort edit kanppen och displayar alla knappar inom diven 
+    document.getElementById("editBtn - " + contentId).style.display = 'none';
+    // Render buttons for editing
+    document.getElementById(buttonId).innerHTML = `
+    <button class="saveBtn" id="saveBtn - ${contentId}" onclick="putRequest('${contentId}'); hideBtn('${contentId}')">Save</button>
+    <button class="cancelBtn" id="cancelBtn - ${contentId}" onclick="hideBtn('${contentId}')">Cancel</button>
+    <div class="status" id="status - ${contentId}">
+            <form action="/action_page.php">
+                <label for="status - ${contentId}">Status:</label>
+                    <select name="status - ${contentId}" id="form - ${contentId}" class="form">
+                        <option value="1">Ej påbörjad</option>
+                        <option value="2">Pågående</option>
+                        <option value="3">Avslutad</option>
+                    </select>
+                <br><br>
+            </form>
+        </div>`;
 }
 
-setInterval(time, 1000);
+ //Exits edit-mode
+function hideBtn(contentId) {
+    const buttonId = "buttons - " + contentId
+    // Removes buttons and adds a edit button
+    document.getElementById(buttonId).innerHTML = `<button class="editButton" id="editBtn - ${contentId}" onclick="editBtn('${contentId}')"> Edit </button>`
+}
