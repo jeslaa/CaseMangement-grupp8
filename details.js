@@ -18,6 +18,7 @@ getData()
 
 const createCard = (data) => {
     const card = document.createElement('div')
+    card.classList.add("card")
 
     const id = document.createElement('h2')
     id.innerText = 'ID:  '+ data.id
@@ -27,6 +28,7 @@ const createCard = (data) => {
 
     const sub = document.createElement('p')
     sub.innerText = 'SUBEJCT:  '+ data.subject
+    // sub.classList.add("ptag")
 
     const email = document.createElement('p')
     email.innerText = 'EMAIL:  '+ data.email
