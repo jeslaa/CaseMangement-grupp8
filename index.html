@@ -9,34 +9,52 @@
         
     </head>
     <body>
-        <div class="content">
-            <div class="addCard">
-                <form id="addPost">
-                    <div>
-                        <input type="text" id="title" placeholder=" Title" />
-                    </div>
-                    <div>
-                        <input
-                        id="message"
-                        type="text"
-                        placeholder=" Message"
-                        />
-                        <input
+        <div class="wrapper">
+            <label class="switch">
+                <input type="checkbox" name="checkbox" id="dark-mode-toggle" class="dark-mode-toggle" aria-label="toggle dark mode">
+                <span class="slider"></span>
+            </label>
+            <p class="wrapper-p">Case Manager <span id="span"></span></p>
+        </div>    
+            <div class="navbar">
+                <div class="navbar-buttons">
+                    <a href="index.html" class="nav-btn">Cases</a>
+                    <a href="#" class="nav-btn" id="active" onclick="toggleMenu()">Add case</a>
+                    <a href="#" class="nav-btn">Put</a>
+                    <a href="#" class="nav-btn">Delete</a>
+                </div>
+            </div>
+
+        <div class="sub-menu-wrap" id="subMenu">
+            <div class="popup">
+                <div class="addCard">
+                    <form id="addPost">
+                        <div>
+                            <input
                             id="subject"
                             type="text"
                             placeholder=" Subject"
-                        />
-                        <input id="email" type="email" placeholder=" Email" />
-                        <textarea id="body" placeholder=" Body"></textarea>        
-                    </div>
-                    <input class="add-btn" type="submit" value="Add Case" />
-                </form>
+                            />
+                            <input
+                            id="message"
+                            type="text"
+                            placeholder=" Comment"
+                            />
+                            <input id="email" type="email" placeholder=" Email" />
+                        </div>
+                        <input class="add-btn" type="submit" value="Add Case" />
+                    </form>
+                </div>
             </div>
             
         </div>
         <div id="output">
             <!-- <button id="id-btn" class="add-btn" onclick="changeStatus()">Edit Status</button> -->
         </div>
+
+        <div id="output">
+        </div>
+
         <script src="script.js"></script>
     </body>
 </html>

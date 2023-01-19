@@ -2,57 +2,180 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+} 
+
+body {
+    background-color: var(--clr-background);
 }
 
-.content {
-    display: grid;
-    place-items: center;
+/*NAVBAR/DARK-MODE*/
+
+.wrapper {
     width: 100%;
-    margin-top: 2rem;
+    height: 100px;
+    padding: 1.5rem;
+    padding-left: 10rem;
+    background-color: var(--clr-background);
+    color: var(--clr-text);
+    font-size: 2rem;
+    box-shadow: #333 3px 3px 10px;
+    z-index: 1;
+    
+//DARKMODE BUTTON
+    .switch {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+        
+    .slider {
+        margin: 2rem;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #b9b9b9;
+        transition: .4s;
+        border-radius: 30px;
+        box-shadow: #333 1px 1px 3px;
+        width: 4rem;
+        height: 2rem;
+    }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: var(--size-of-icon,1.4em);
+        width: var(--size-of-icon,1.4em);
+        border-radius: 20px;
+        left: var(--slider-offset,0.3em);
+        top: 50%;
+        transform: translateY(-50%);
+        background: linear-gradient(40deg,#ff0037,#f2ff00af 70%);
+    transition: .4s;
+    }
+        
+    input:checked + .slider {
+        background-color: #303136;
+    }
+        
+    input:checked + .slider:before {
+        left: calc(100% - (var(--size-of-icon,1.4em) + var(--slider-offset,0.3em)));
+        background: #303136;
+        /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
+         box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
+    }
+
+    #span {
+        float: right;
+    }
+}
+
+.navbar {
+    width: 100%;
+    height: 7rem;
+    background-color: var(--clr-thrid);
+    
+    .navbar-buttons {
+        display: flex;
+        justify-content: start;
+        padding: 1.5rem;
+        box-shadow: #333 1px 7px 7px;
+
+        .nav-btn {
+            text-align: center;
+            width: 7rem;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            box-shadow: #333 0px 6px 5px;
+            background-color: var(--clr-buttons);
+            color: var(--clr-btntext);
+            border-radius: 0.1rem;
+            border: 1px solid #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--clr-buttonHover);
+            box-shadow: #333 0px 3px 3px;
+            transition: 0.2s ease-in-out;
+        }
+    }
+}   
+
+/*ADD-POST/ SUB-MENU*/
+
+.sub-menu-wrap.open-menu {
+    height: 100%;
+    width: 40%;
+
+    .popup {
+        display: block;
+    }
+}
+
+.sub-menu-wrap{
+    position: absolute;
+    overflow: hidden;
+    width: 0%;
+    margin-left: 2rem;
+    z-index: 1;
 
     .addCard {
-        width: 80%;
+        width: 100%;
         padding: 2rem;
         box-shadow: #333 3px 3px 10px;
-        background-color: rgb(228, 228, 228);
+        background-color: var(--clr-primary);
 
         #title {
-            width: 99%;
+            width: 100%;
             height: 2rem;
-            background-color: rgb(227, 226, 208);
+            background-color: var(--clr-secondary);
             margin: 0.3rem;
             border: solid 1px #333;
         }
 
         #body {
-            min-width: 99%;
-            max-width: 99%;
+            min-width: 100%;
+            max-width: 100%;
             height: 4rem;
-            background-color: rgb(227, 226, 208);
             margin: 0.3rem;
             border: solid 1px #333;
+            background-color: var(--clr-secondary);
         }
 
         #message {
-            width: 99%;
+            width: 100%;
             height: 2rem;
-            background-color: rgb(227, 226, 208);
+            background-color: var(--clr-secondary);
             margin: 0.3rem;
             border: solid 1px #333;
         }
 
         #subject {
-            width: 99%;
+            width: 100%;
             height: 2rem;
-            background-color: rgb(227, 226, 208);
+            background-color: var(--clr-secondary);
             margin: 0.3rem;
             border: solid 1px #333;
         }
 
         #email {
-            width: 99%;
+            width: 100%;
             height: 2rem;
-            background-color: rgb(227, 226, 208);
+            background-color: var(--clr-secondary);
             margin: 0.3rem;
             border: solid 1px #333;
         }
@@ -60,43 +183,51 @@
         .add-btn {
             width: 4rem;
             height: 2rem;
-            background-color: #0071e3;
-            color: aliceblue;
+            background-color: var(--clr-buttons);
+            color: var(--clr-btntext);
             border-radius: 0.2rem;
             border: none;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             cursor: pointer;
             box-shadow: #333 3px 3px 7px;
             margin-left: 0.3rem;
         }
+
+        ::placeholder {
+            color: var(--clr-text);
+        }
     }
 }
 
+/*DATA FETCHING CARDS*/
+
 .caseCard {
+    background-attachment: scroll;
+    position: relative;
     width: 80%;
     margin-top: 1rem;
+    border-radius: 0.1rem;
     margin-left: 10%;
-    padding: 1rem;
+    padding: 0.5rem;
     box-shadow: #333 3px 3px 10px;
-    background-color: rgb(228, 228, 228);
+    background-color: var(--clr-primary);
+    color: var(--clr-text);
 
     .sections {
         display: inline-block;
-        width: 49%;
+        width: 49.8%;
         border: solid 0.1rem #333;
     }
 
     .api-data {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         padding: 0.4rem;
         background-color: rgb(227, 226, 208);
-
+        
     }
 
     .api-data2 {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
         padding: 0.4rem;
-        background-color: rgb(227, 226, 208);
+        background-color: var(--clr-secondary);
         border-top: solid 0.1rem #333;
     }
 
@@ -105,29 +236,18 @@
         right: 7.4%;
         width: 3rem;
         height: 2rem;
-        background-color: #0071e3;
-        color: aliceblue;
+        background-color: var(--clr-buttons);
+        color: var(--clr-btntext);
         border-radius: 0.2rem;
         border: none;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         cursor: pointer;
         box-shadow: #333 3px 3px 7px;
 
     }
 
     .edit-btn:hover {
-        background-color: #0359af96;
+        background-color: #0359af;
     }
 }
 
-.status-btnClass {
-    width: 3rem;
-    height: 2rem;
-    background-color: #0071e3;
-    color: aliceblue;
-    border-radius: 0.2rem;
-    border: none;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    cursor: pointer;
-    box-shadow: #333 3px 3px 7px;
-}
+
