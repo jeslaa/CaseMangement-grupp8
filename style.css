@@ -272,11 +272,11 @@ body {
 
 .darkmode {
   --clr-background: rgb(99, 99, 99);
-  --clr-primary: rgb(51, 52, 55);
-  --clr-secondary: rgb(128, 128, 128);
+  --clr-primary: rgb(255, 255, 255);
+  --clr-secondary: rgb(77, 77, 77);
   --clr-thrid: #6f7781;
-  --clr-buttons: #47617b;
-  --clr-buttonHover: #1f3041;
+  --clr-buttons: #1e3348;
+  --clr-buttonHover: #2c4a68;
   --clr-btntext: #ffffff;
   --clr-text: #ffffff;
 }/*# sourceMappingURL=style.css.map */

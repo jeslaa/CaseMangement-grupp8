@@ -11,7 +11,7 @@ function getData() {
                         <div class="sections">
                             <!-- Left section -->
                             <div class="api-data2">
-                                <label id="dataApiKey">ID:</label> &nbsp; <p id="dataApiValue">${content.id}</p>
+                                <a href="${`details.html?id=${content.id}`}" class="id-link" id="dataApiKey">ID:</label> &nbsp; <p id="dataApiValue">${content.id}</a>
                             </div>
                             <div class="api-data2">
                                 <label id="dataApiKey">DATE:</label> &nbsp; <p id="dataApiValue">${content.created}</p>
