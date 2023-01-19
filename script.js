@@ -99,7 +99,7 @@ function putRequest(id) {
 
     //Gets value from select/option
     const status = getStatusFromDropDown(id);
-
+    
     //Mapping data to keys for 
     const data = {
         "id": id,
