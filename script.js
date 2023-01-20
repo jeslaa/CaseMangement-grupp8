@@ -156,7 +156,10 @@ function editBtn(contentId) {
                 <br><br>
             </form>
         </div>`;
+
 }
+
+
 
  //Exits edit-mode
 function hideBtn(contentId) {

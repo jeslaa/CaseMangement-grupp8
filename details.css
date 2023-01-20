@@ -1,0 +1,63 @@
+body {
+  background-color: var(--clr-background);
+}
+
+#output {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 800px;
+}
+#output .card {
+  background-color: #C5C5C5;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 40px 40px 100px rgb(0, 0, 0);
+  font-size: 1.5rem;
+}
+
+a {
+  position: relative;
+  top: 1rem;
+  left: 0.5rem;
+  background-color: var(--clr-buttons);
+  text-decoration: none;
+  color: var(--clr-btntext);
+  font-size: 2rem;
+  padding: 0.5rem;
+  box-shadow: 5px 5px 15px rgb(0, 0, 0);
+  border-radius: 0.5rem;
+}
+
+a:hover {
+  background-color: var(--clr-buttonHover);
+  transition: all ease 0.2s;
+}
+
+.card {
+  text-align: center;
+}
+
+h2 {
+  padding: 0.2rem;
+  border: 0.2rem solid #333;
+  background-color: var(--clr-primary);
+}
+
+p {
+  padding: 0.2rem;
+  font-weight: 600;
+  border: 0.2rem solid #333;
+  background-color: var(--clr-primary);
+}
+
+:root {
+  --clr-background: rgb(99, 99, 99);
+  --clr-primary: rgb(149, 149, 149);
+  --clr-secondary: rgb(77, 77, 77);
+  --clr-thrid: #6f7781;
+  --clr-buttons: #1e3348;
+  --clr-buttonHover: #0359af;
+  --clr-btntext: #ffffff;
+  --clr-text: #ffffff;
+}/*# sourceMappingURL=details.css.map */
