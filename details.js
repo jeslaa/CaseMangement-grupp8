@@ -37,10 +37,10 @@ const createCard = (data) => {
     message.innerText = 'COMMENTS:  '+ data.message
     
     const statusid = document.createElement('p')
-    statusid.innerText = 'STATUSID:  '+ data.statusId
+    statusid.innerText = 'STATUS ID:  '+ data.statusId
     
     const statusN = document.createElement('p')
-    statusN.innerText = 'STATUSNAME:  '+ data.status.statusName
+    statusN.innerText = 'STATUS NAME:  '+ data.status.statusName
 
     card.appendChild(id)
     card.appendChild(time)
