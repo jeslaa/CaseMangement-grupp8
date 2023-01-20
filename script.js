@@ -114,7 +114,7 @@ function putRequest(id) {
         headers: {
             Accept:
                 "application/json, text/plain, *//*",
-            "Content-type": "application/json",
+            "Content-type/text": "application/json",
         },
         
         body: JSON.stringify(data),

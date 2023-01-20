@@ -89,7 +89,7 @@ body {
   text-align: center;
   width: 7rem;
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin: 0.8rem;
   box-shadow: #333 0px 6px 5px;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -106,8 +106,9 @@ body {
 
 /*ADD-POST/ SUB-MENU*/
 .sub-menu-wrap.open-menu {
-  height: 100%;
+  height: 14rem;
   width: 40%;
+  border: 0.3rem solid #333;
 }
 .sub-menu-wrap.open-menu .popup {
   display: block;
@@ -117,7 +118,6 @@ body {
   position: absolute;
   overflow: hidden;
   width: 0%;
-  margin-left: 2rem;
   z-index: 1;
 }
 .sub-menu-wrap .addCard {
@@ -139,12 +139,30 @@ body {
   margin: 0.3rem;
   border: solid 1px #333;
 }
+.sub-menu-wrap .addCard #message::-moz-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #message:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #message::placeholder {
+  color: var(--clr-text);
+}
 .sub-menu-wrap .addCard #subject {
   width: 100%;
   height: 2rem;
   background-color: var(--clr-secondary);
   margin: 0.3rem;
   border: solid 1px #333;
+}
+.sub-menu-wrap .addCard #subject::-moz-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #subject:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #subject::placeholder {
+  color: var(--clr-text);
 }
 .sub-menu-wrap .addCard #email {
   width: 100%;
@@ -153,6 +171,15 @@ body {
   margin: 0.3rem;
   border: solid 1px #333;
   cursor: pointer;
+}
+.sub-menu-wrap .addCard #email::-moz-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #email:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #email::placeholder {
+  color: var(--clr-text);
 }
 .sub-menu-wrap .addCard .add-btn {
   width: 4rem;
@@ -165,14 +192,8 @@ body {
   box-shadow: #333 3px 3px 7px;
   margin-left: 0.3rem;
 }
-.sub-menu-wrap .addCard ::-moz-placeholder {
-  color: var(--clr-text);
-}
-.sub-menu-wrap .addCard :-ms-input-placeholder {
-  color: var(--clr-text);
-}
-.sub-menu-wrap .addCard ::placeholder {
-  color: var(--clr-text);
+.sub-menu-wrap .addCard .add-btn:hover {
+  background-color: var(--clr-buttonHover);
 }
 
 /*DATA FETCHING CARDS*/
@@ -181,7 +202,7 @@ body {
   position: relative;
   width: 80%;
   margin-top: 1rem;
-  border-radius: 0.1rem;
+  border-radius: 1rem;
   margin-left: 10%;
   padding: 0.5rem;
   box-shadow: #333 3px 3px 10px;
@@ -191,6 +212,8 @@ body {
 .caseCard .sections {
   display: inline-block;
   width: 49.8%;
+  max-height: 100px;
+  overflow: hidden;
   border: solid 0.1rem #333;
 }
 .caseCard .api-data {
@@ -206,8 +229,8 @@ body {
 }
 .caseCard .editButton {
   display: block;
-  margin: 0.5rem;
-  width: 3rem;
+  margin: 0.3rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -220,7 +243,7 @@ body {
   background-color: #0359af;
 }
 .caseCard .saveBtn {
-  width: 3rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -234,7 +257,7 @@ body {
   background-color: #3b8c3e;
 }
 .caseCard .cancelBtn {
-  width: 3rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -249,7 +272,7 @@ body {
 }
 .caseCard .status {
   position: absolute;
-  bottom: 4.5rem;
+  bottom: 4.7rem;
   right: 0.7rem;
   color: var(--clr-text);
 }
@@ -258,6 +281,123 @@ body {
   padding: 0.2rem;
 }
 
+.lds-spinner {
+  color: official;
+  display: none;
+  position: absolute;
+  left: 6rem;
+  bottom: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-spinner div {
+  transform-origin: 40px 40px;
+  -webkit-animation: lds-spinner 1.2s linear infinite;
+          animation: lds-spinner 1.2s linear infinite;
+}
+
+.lds-spinner div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 25px;
+  left: 38px;
+  width: 2px;
+  height: 8px;
+  border-radius: 20%;
+  background: #fff;
+}
+
+.lds-spinner div:nth-child(1) {
+  transform: rotate(0deg);
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+}
+
+.lds-spinner div:nth-child(2) {
+  transform: rotate(30deg);
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+
+.lds-spinner div:nth-child(3) {
+  transform: rotate(60deg);
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+}
+
+.lds-spinner div:nth-child(4) {
+  transform: rotate(90deg);
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
+}
+
+.lds-spinner div:nth-child(5) {
+  transform: rotate(120deg);
+  -webkit-animation-delay: -0.7s;
+          animation-delay: -0.7s;
+}
+
+.lds-spinner div:nth-child(6) {
+  transform: rotate(150deg);
+  -webkit-animation-delay: -0.6s;
+          animation-delay: -0.6s;
+}
+
+.lds-spinner div:nth-child(7) {
+  transform: rotate(180deg);
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
+}
+
+.lds-spinner div:nth-child(8) {
+  transform: rotate(210deg);
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+
+.lds-spinner div:nth-child(9) {
+  transform: rotate(240deg);
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+}
+
+.lds-spinner div:nth-child(10) {
+  transform: rotate(270deg);
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+
+.lds-spinner div:nth-child(11) {
+  transform: rotate(300deg);
+  -webkit-animation-delay: -0.1s;
+          animation-delay: -0.1s;
+}
+
+.lds-spinner div:nth-child(12) {
+  transform: rotate(330deg);
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+@-webkit-keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes lds-spinner {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 /*COLORS / DAY/NIGHT-MODE*/
 :root {
   --clr-background: rgb(243, 243, 243);
@@ -272,11 +412,11 @@ body {
 
 .darkmode {
   --clr-background: rgb(99, 99, 99);
-  --clr-primary: rgb(255, 255, 255);
+  --clr-primary: rgb(149, 149, 149);
   --clr-secondary: rgb(77, 77, 77);
   --clr-thrid: #6f7781;
   --clr-buttons: #1e3348;
-  --clr-buttonHover: #2c4a68;
+  --clr-buttonHover: #0359af;
   --clr-btntext: #ffffff;
   --clr-text: #ffffff;
 }/*# sourceMappingURL=style.css.map */

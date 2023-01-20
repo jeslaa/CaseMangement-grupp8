@@ -43,3 +43,8 @@ function time() {
 }
 
 setInterval(time, 1000);
+
+//Loader
+document.getElementsByClassName("add-btn").onclick = function() {
+    document.getElementsByClassName("lds-spinner").style.display = "inline-block";
+}
