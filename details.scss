@@ -9,11 +9,13 @@ body {
     min-height: 800px;
 
     .card{
-        background-color: #C5C5C5;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 40px 40px 100px rgb(0, 0, 0);
+        padding: 3rem;
+        border-radius: 23px;
+        background-color: var(--clr-secondary);
+        box-shadow: inset 16px 16px 17px rgb(39, 39, 39),
+        inset -16px -16px 17px rgb(23, 23, 23);
         font-size: 1.5rem;
+        text-align: center;
     }
 }
 
@@ -35,21 +37,23 @@ a:hover{
     transition: all ease 0.2s;
 }
 
-.card {
-    text-align: center;
-}
-
 h2 {
     padding: 0.2rem;
-    border: 0.2rem solid #333;
-    background-color: var(--clr-primary);
+    border-bottom: 0.1rem solid #333;
+    border-radius: 0.3rem;
+    background-color: var(--clr-thrid);
+    box-shadow: inset 3px 3px 6px rgb(0, 0, 0),
+    inset -3px -3px 3px rgb(23, 23, 23);
 }
 
 p {
     padding: 0.2rem;
     font-weight: 600;
-    border: 0.2rem solid #333;
-    background-color: var(--clr-primary);
+    border-bottom: 0.1rem solid #333;
+    border-radius: 0.3rem;
+    background-color: var(--clr-thrid);
+    box-shadow: inset 3px 3px 6px rgb(0, 0, 0),
+    inset -3px -3px 3px rgb(23, 23, 23);
 }
 
 :root {
