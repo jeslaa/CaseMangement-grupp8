@@ -4,6 +4,7 @@ function getData() {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
+            data.sort((a, b) => (b.created > a.created) ? 1 : -1);
             document.getElementById("output").innerHTML = data //Skriver ut all html i en div som kallas för output
                 .map(function (content) { //Mappar värden till DOMen för varje "content" hämtad från APIn
                     return `
@@ -78,7 +79,10 @@ function addPost() {
         body: requestData,
     })
         .then((res) => res.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            console.log(data);
+            window.location.reload();
+        })
         .catch((err) => {
             console.log(err);
         });
@@ -99,7 +103,7 @@ function putRequest(id) {
 
     //Gets value from select/option
     const status = getStatusFromDropDown(id);
-
+    
     //Mapping data to keys for 
     const data = {
         "id": id,
@@ -143,7 +147,7 @@ function editBtn(contentId) {
     document.getElementById("editBtn - " + contentId).style.display = 'none';
     // Render buttons for editing
     document.getElementById(buttonId).innerHTML = `
-    <button class="saveBtn" id="saveBtn - ${contentId}" onclick="putRequest('${contentId}'); hideBtn('${contentId}')">Save</button>
+    <button class="saveBtn" id="saveBtn - ${contentId}" onclick="putRequest('${contentId}'); hideBtn('${contentId}'); refreshPage();">Save</button>
     <button class="cancelBtn" id="cancelBtn - ${contentId}" onclick="hideBtn('${contentId}')">Cancel</button>
     <div class="status" id="status - ${contentId}">
             <form action="/action_page.php">
@@ -157,13 +161,15 @@ function editBtn(contentId) {
             </form>
         </div>`;
 
-}
-
-
+    }
 
  //Exits edit-mode
 function hideBtn(contentId) {
     const buttonId = "buttons - " + contentId
     // Removes buttons and adds a edit button
     document.getElementById(buttonId).innerHTML = `<button class="editButton" id="editBtn - ${contentId}" onclick="editBtn('${contentId}')"> Edit </button>`
+}
+
+function refreshPage() {
+    setTimeout("location.reload(true);", 1000);
 }

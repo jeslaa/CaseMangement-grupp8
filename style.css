@@ -77,6 +77,7 @@ body {
 .navbar {
   width: 100%;
   height: 7rem;
+  border-bottom: 0.2rem solid #333;
   background-color: var(--clr-thrid);
 }
 .navbar .navbar-buttons {
@@ -89,7 +90,7 @@ body {
   text-align: center;
   width: 7rem;
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin: 0.8rem;
   box-shadow: #333 0px 6px 5px;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -106,8 +107,12 @@ body {
 
 /*ADD-POST/ SUB-MENU*/
 .sub-menu-wrap.open-menu {
-  height: 100%;
+  height: 14rem;
   width: 40%;
+  border-right: 0.3rem solid #333;
+  border-bottom: 0.3rem solid #333;
+  border-bottom-right-radius: 1rem;
+  transition: 0.5s ease-in-out;
 }
 .sub-menu-wrap.open-menu .popup {
   display: block;
@@ -117,14 +122,13 @@ body {
   position: absolute;
   overflow: hidden;
   width: 0%;
-  margin-left: 2rem;
   z-index: 1;
 }
 .sub-menu-wrap .addCard {
   width: 100%;
   padding: 2rem;
   box-shadow: #333 3px 3px 10px;
-  background-color: var(--clr-primary);
+  background-color: var(--clr-thrid);
 }
 .sub-menu-wrap .addCard #title {
   display: none;
@@ -139,12 +143,30 @@ body {
   margin: 0.3rem;
   border: solid 1px #333;
 }
+.sub-menu-wrap .addCard #message::-moz-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #message:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #message::placeholder {
+  color: var(--clr-text);
+}
 .sub-menu-wrap .addCard #subject {
   width: 100%;
   height: 2rem;
   background-color: var(--clr-secondary);
   margin: 0.3rem;
   border: solid 1px #333;
+}
+.sub-menu-wrap .addCard #subject::-moz-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #subject:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #subject::placeholder {
+  color: var(--clr-text);
 }
 .sub-menu-wrap .addCard #email {
   width: 100%;
@@ -153,6 +175,15 @@ body {
   margin: 0.3rem;
   border: solid 1px #333;
   cursor: pointer;
+}
+.sub-menu-wrap .addCard #email::-moz-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #email:-ms-input-placeholder {
+  color: var(--clr-text);
+}
+.sub-menu-wrap .addCard #email::placeholder {
+  color: var(--clr-text);
 }
 .sub-menu-wrap .addCard .add-btn {
   width: 4rem;
@@ -164,15 +195,10 @@ body {
   cursor: pointer;
   box-shadow: #333 3px 3px 7px;
   margin-left: 0.3rem;
+  margin-top: 0.7rem;
 }
-.sub-menu-wrap .addCard ::-moz-placeholder {
-  color: var(--clr-text);
-}
-.sub-menu-wrap .addCard :-ms-input-placeholder {
-  color: var(--clr-text);
-}
-.sub-menu-wrap .addCard ::placeholder {
-  color: var(--clr-text);
+.sub-menu-wrap .addCard .add-btn:hover {
+  background-color: var(--clr-buttonHover);
 }
 
 /*DATA FETCHING CARDS*/
@@ -181,7 +207,7 @@ body {
   position: relative;
   width: 80%;
   margin-top: 1rem;
-  border-radius: 0.1rem;
+  border-radius: 1rem;
   margin-left: 10%;
   padding: 0.5rem;
   box-shadow: #333 3px 3px 10px;
@@ -191,6 +217,8 @@ body {
 .caseCard .sections {
   display: inline-block;
   width: 49.8%;
+  max-height: 100px;
+  overflow: hidden;
   border: solid 0.1rem #333;
 }
 .caseCard .api-data {
@@ -206,8 +234,8 @@ body {
 }
 .caseCard .editButton {
   display: block;
-  margin: 0.5rem;
-  width: 3rem;
+  margin: 0.3rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -215,12 +243,13 @@ body {
   border: none;
   cursor: pointer;
   box-shadow: #333 3px 3px 7px;
+  transition: 0.1s ease-in-out;
 }
 .caseCard .editButton:hover {
   background-color: #0359af;
 }
 .caseCard .saveBtn {
-  width: 3rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -234,7 +263,7 @@ body {
   background-color: #3b8c3e;
 }
 .caseCard .cancelBtn {
-  width: 3rem;
+  width: 5rem;
   height: 2rem;
   background-color: var(--clr-buttons);
   color: var(--clr-btntext);
@@ -249,7 +278,7 @@ body {
 }
 .caseCard .status {
   position: absolute;
-  bottom: 4.5rem;
+  bottom: 4.7rem;
   right: 0.7rem;
   color: var(--clr-text);
 }
@@ -263,7 +292,7 @@ body {
   --clr-background: rgb(243, 243, 243);
   --clr-primary: #B9B7BD;
   --clr-secondary: #eef5ff;
-  --clr-thrid: #9da6af7a;
+  --clr-thrid: #9da6af;
   --clr-buttons: #bcd4f5;
   --clr-buttonHover: #ffd000de;
   --clr-btntext: #000000;
@@ -272,11 +301,11 @@ body {
 
 .darkmode {
   --clr-background: rgb(99, 99, 99);
-  --clr-primary: rgb(255, 255, 255);
+  --clr-primary: rgb(149, 149, 149);
   --clr-secondary: rgb(77, 77, 77);
   --clr-thrid: #6f7781;
   --clr-buttons: #1e3348;
-  --clr-buttonHover: #2c4a68;
+  --clr-buttonHover: #0359af;
   --clr-btntext: #ffffff;
   --clr-text: #ffffff;
 }

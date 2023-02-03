@@ -1,3 +1,7 @@
+body {
+    background-color: var(--clr-background);
+}
+
 #output {
     display: flex;
     justify-content: center;
@@ -5,20 +9,60 @@
     min-height: 800px;
 
     .card{
-        background-color: #C5C5C5;
-        padding: 70px;
-        border-radius: 10px;
-        box-shadow: 10px 7px 7px #8d8d8d;
+        padding: 3rem;
+        border-radius: 23px;
+        background-color: var(--clr-secondary);
+        box-shadow: inset 16px 16px 17px rgb(39, 39, 39),
+        inset -16px -16px 17px rgb(23, 23, 23);
+        font-size: 1.5rem;
+        text-align: center;
     }
 }
 
-a{
+a {
+    position: relative;
+    top: 1rem;
+    left: 0.5rem;
+    background-color: var(--clr-buttons);
     text-decoration: none;
-    color: hotpink;
-    font-size: 4rem;
+    color: var(--clr-btntext);
+    font-size: 2rem;
+    padding: 0.5rem;
+    box-shadow: 5px 5px 15px rgb(0, 0, 0);
+    border-radius: 0.5rem;
 }
 
 a:hover{
-    color: rgb(212, 120, 166);
+    background-color: var(--clr-buttonHover);
     transition: all ease 0.2s;
+}
+
+h2 {
+    padding: 0.2rem;
+    border-bottom: 0.1rem solid #333;
+    border-radius: 0.3rem;
+    background-color: var(--clr-thrid);
+    box-shadow: inset 3px 3px 6px rgb(0, 0, 0),
+    inset -3px -3px 3px rgb(23, 23, 23);
+}
+
+p {
+    padding: 0.2rem;
+    font-weight: 600;
+    border-bottom: 0.1rem solid #333;
+    border-radius: 0.3rem;
+    background-color: var(--clr-thrid);
+    box-shadow: inset 3px 3px 6px rgb(0, 0, 0),
+    inset -3px -3px 3px rgb(23, 23, 23);
+}
+
+:root {
+    --clr-background: rgb(99, 99, 99);
+    --clr-primary: rgb(149, 149, 149);
+    --clr-secondary: rgb(77, 77, 77);
+    --clr-thrid: #6f7781;
+    --clr-buttons: #1e3348;
+    --clr-buttonHover: #0359af;
+    --clr-btntext: #ffffff;
+    --clr-text: #ffffff;
 }
